@@ -1,0 +1,14 @@
+\babel@toc {serbian}{}
+\contentsline {section}{\numberline {1}Uvod}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Opis problema}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Cilj rada}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Opis podataka}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Struktura upitnika}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Dodatne promenljive}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Metodologija}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Priprema podataka}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Algoritmi klasterovanja}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Evaluacija rezultata}{4}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Rezultati}{5}{section.4}%
+\contentsline {section}{\numberline {5}Diskusija}{5}{section.5}%
+\contentsline {section}{\numberline {6}Zaključak}{5}{section.6}%
