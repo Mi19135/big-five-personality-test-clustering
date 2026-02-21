@@ -6,8 +6,18 @@
 \BOOKMARK [2][-]{subsection.2.2}{Dodatne promenljive}{section.2}% 6
 \BOOKMARK [1][-]{section.3}{Metodologija}{}% 7
 \BOOKMARK [2][-]{subsection.3.1}{Priprema podataka}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Algoritmi klasterovanja}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.3}{Evaluacija rezultata}{section.3}% 10
-\BOOKMARK [1][-]{section.4}{Rezultati}{}% 11
-\BOOKMARK [1][-]{section.5}{Diskusija}{}% 12
-\BOOKMARK [1][-]{section.6}{Zakljucak}{}% 13
+\BOOKMARK [1][-]{section.4}{Pretprocesiranje podataka}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Ucitavanje i filtriranje podataka}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Izbor relevantnih promenljivih}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Standardizacija podataka}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Redukcija dimenzionalnosti \205 PCA analiza}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{PCA bez vremenskih promenljivih}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{PCA sa vremenskim promenljivama}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Algoritmi klasterovanja}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{Klasterovanje \205 KMeans}{section.6}% 17
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Rezultati klasterovanja}{subsection.6.1}% 18
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Evaluacija klastera}{subsection.6.1}% 19
+\BOOKMARK [2][-]{subsection.6.2}{Evaluacija rezultata}{section.6}% 20
+\BOOKMARK [1][-]{section.7}{Rezultati}{}% 21
+\BOOKMARK [1][-]{section.8}{Diskusija}{}% 22
+\BOOKMARK [1][-]{section.9}{Zakljucak}{}% 23

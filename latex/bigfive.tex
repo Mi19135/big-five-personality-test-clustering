@@ -119,7 +119,87 @@ Pre primene algoritama klasterovanja izvršeni su sledeći koraci:
 
 Skaliranje je posebno važno jer većina algoritama klasterovanja koristi udaljenosti između tačaka, te različiti opsezi varijabli mogu značajno uticati na rezultate.
 
-\subsection{Algoritmi klasterovanja}
+\section{Pretprocesiranje podataka}
+
+Pre same primene algoritama klasterovanja izvršena je detaljna priprema podataka.
+
+\subsection{Učitavanje i filtriranje podataka}
+
+Podaci su učitani iz fajla \texttt{data-final.csv}, koji sadrži 1 015 341 ispitanika(redova) i 110 promenljivih(kolona).
+
+Radi povećanja kvaliteta podataka, zadržani su samo ispitanici kod kojih je promenljiva \texttt{IPC} jednaka 1. Ova promenljiva označava broj zapisa sa iste IP adrese, te se njenim filtriranjem uklanjaju potencijalni višestruki unosi.
+
+Nakon filtriranja, dataset je smanjen na 696 845 zapisa.
+
+\subsection{Izbor relevantnih promenljivih}
+
+Iz originalnog skupa podataka izdvojene su isključivo tvrdnje koje pripadaju pet dimenzija ličnosti (EXT, EST, AGR, CSN, OPN).
+
+Prvo su izdvojene kolone koje predstavljaju same odgovore ispitanika (bez vremenskih oznaka odgovaranja, koje se završavaju sa \texttt{\_E}). Time je dobijen skup od 50 promenljivih, odnosno po 10 za svaku dimenziju.
+
+Nakon toga uklonjeni su redovi koji sadrže isključivo nedostajuće vrednosti. Nakon ovog koraka, dataset sadrži 695 704 ispitanika i 50 promenljivih.
+
+Pored toga, formiran je i prošireni skup podataka koji uključuje i vremenske promenljive odgovaranja (kolone koje se završavaju sa \texttt{\_E}). Na taj način dobijen je skup od 100 promenljivih, koji omogućava ispitivanje da li vreme odgovaranja utiče na formiranje klastera.
+
+\subsection{Standardizacija podataka}
+
+Pre primene algoritama klasterovanja izvršena je standardizacija svih numeričkih promenljivih korišćenjem metode Z-transformacije (StandardScaler).
+
+Standardizacijom se svaka promenljiva transformiše tako da ima srednju vrednost 0 i standardnu devijaciju 1:
+
+\[
+z = \frac{x - \mu}{\sigma}
+\]
+
+Ovaj korak je neophodan jer algoritmi klasterovanja koriste mere udaljenosti između tačaka, te bi promenljive sa većim opsegom vrednosti imale veći uticaj na rezultat ukoliko ne bi bile skalirane.
+
+Standardizacija je izvršena posebno za:
+\begin{itemize}
+    \item skup od 50 psiholoških stavki,
+    \item prošireni skup od 100 promenljivih (uključujući vreme odgovaranja).
+\end{itemize}
+
+\section{Redukcija dimenzionalnosti – PCA analiza}
+
+Radi vizuelizacije strukture podataka primenjena je analiza glavnih komponenti (Principal Component Analysis – PCA).
+
+PCA predstavlja metodu redukcije dimenzionalnosti kojom se originalne promenljive transformišu u novi skup međusobno nekorelisanih komponenti. Prva glavna komponenta (PC1) objašnjava najveći deo ukupne varijanse podataka, dok druga komponenta (PC2) objašnjava sledeći najveći deo varijanse.
+
+U ovoj analizi izvršena je redukcija na dve glavne komponente, kako bi se omogućila dvodimenzionalna vizuelizacija podataka.
+
+\subsection{PCA bez vremenskih promenljivih}
+
+Prvo je PCA primenjena na standardizovani skup od 50 psiholoških stavki (bez vremenskih oznaka odgovaranja).
+
+\subsection{PCA sa vremenskim promenljivama}
+
+Zatim je ista procedura primenjena na prošireni skup podataka koji uključuje i vremenske promenljive odgovaranja (ukupno 100 promenljivih).
+
+Na slici su prikazane projekcije ispitanika u prostoru prve dve glavne komponente za oba slučaja.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/pca_comparison.png}
+    \caption{Poređenje PCA projekcija bez i sa vremenskim promenljivama}
+    \label{fig:pca_compare}
+\end{figure}
+
+Sa slike se može primetiti:
+\begin{itemize}
+    \item Projekcija bez vremenskih promenljivih prikazuje raspodelu ispitanika samo prema njihovim psihološkim osobinama.
+    \item Projekcija sa vremenskim promenljivama može blago promeniti oblik klastera, ali u ovoj analizi vremenske promenljive nemaju dominantan uticaj.
+\end{itemize}
+
+Ovaj korak je važan jer nam omogućava da:
+\begin{itemize}
+    \item vizuelno sagledamo da li se ispitanici prirodno grupišu,
+    \item procenimo koliko vreme odgovaranja utiče na raspodelu u prostoru glavnih komponenti,
+    \item pripremimo podatke za sledeći korak – primenu algoritama klasterovanja.
+\end{itemize}
+
+
+\section{Algoritmi klasterovanja}
 
 U radu su primenjeni sledeći algoritmi:
 
@@ -127,10 +207,65 @@ U radu su primenjeni sledeći algoritmi:
     \item K-means klasterovanje
     \item Hijerarhijsko (agglomerativno) klasterovanje
     \item DBSCAN
-    \item (po potrebi) Spektralno klasterovanje
+    \item Spektralno klasterovanje
 \end{itemize}
 
 Za algoritme koji zahtevaju unapred definisan broj klastera testirano je više vrednosti parametra $k$, kako bi se procenila stabilnost rezultata.
+
+\subsection{Klasterovanje – KMeans}
+
+Da bismo istražili da li se ispitanici prirodno grupišu, primenili smo algoritam \textbf{KMeans} na standardizovane podatke.
+
+\paragraph{Parametri:}  
+Broj klastera je postavljen na $k=5$, sa \texttt{random\_state=42} radi reproduktivnosti.
+
+\subsubsection{Rezultati klasterovanja}
+
+KMeans je primenjen na:
+\begin{enumerate}
+    \item skup od 50 psiholoških stavki (bez vremenskih promenljivih),
+    \item prošireni skup od 100 promenljivih (uključujući vreme odgovaranja).
+\end{enumerate}
+
+Labele klastera dodate su PCA DataFrame-ovima kako bismo mogli vizualizovati raspodelu u prostoru prve dve glavne komponente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/kmeans_comparison5.png}
+    \caption{KMeans klasteri ($k=5$) – poređenje bez i sa vremenskim promenljivama odgovaranja}
+    \label{fig:kmeans_compare}
+\end{figure}
+
+\subsubsection{Evaluacija klastera}
+
+Za ocenu kvaliteta klastera korišćene su sledeće metrike:
+
+\begin{itemize}
+    \item \textbf{Silhouette score}: meri koliko su tačke unutar klastera slične, a između klastera različite.
+    \item \textbf{Davies-Bouldin score}: niži skor označava bolje odvojene klastere.
+    \item \textbf{Calinski-Harabasz score}: veći skor označava bolje definisane klastere.
+\end{itemize}
+
+Rezultati za uzorak od 15 000 ispitanika:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.051 & 2.94 & 880.6 \\
+Sa vremenskim promenljivim & 0.048 & 3.07 & 238.1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Tumačenje:}  
+Rezultati deluju loše jer algoritam KMeans forsira postojanje klastera čak i kada prirodno nisu jasno izraženi. To je tipično za podatke prikupljene po Big Five modelu, gde se osobine posmatraju kao kontinuirane dimenzije, a ne kao strogi tipovi ličnosti.
+Primetno je da uključivanje vremenskih promenljivih (\_E) donekle menja raspodelu klastera, ali ne dramatično.
+
+\paragraph{Napomena o broju klastera:}  
+Eksperimenti sa $k=4$ mogu dati jasnije granice između klastera, jer peti klaster samo razblažuje centralne tačke.
+
 
 \subsection{Evaluacija rezultata}
 
