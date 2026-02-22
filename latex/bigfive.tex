@@ -236,6 +236,7 @@ Labele klastera dodate su PCA DataFrame-ovima kako bismo mogli vizualizovati ras
     \label{fig:kmeans_compare}
 \end{figure}
 
+
 \subsubsection{Evaluacija klastera}
 
 Za ocenu kvaliteta klastera korišćene su sledeće metrike:
@@ -267,6 +268,219 @@ Primetno je da uključivanje vremenskih promenljivih (\_E) donekle menja raspode
 Eksperimenti sa $k=4$ mogu dati jasnije granice između klastera, jer peti klaster samo razblažuje centralne tačke.
 
 
+\subsection{Hijerarhijsko klasterovanje – Agglomerative Clustering}
+
+Pored algoritma KMeans, primenjen je i hijerarhijski pristup klasterovanju korišćenjem metode \textit{Agglomerative Clustering} sa Ward-ovim kriterijumom spajanja.
+
+Zbog velikog broja ispitanika (preko 600 000), algoritam je testiran na reprezentativnim uzorcima različitih veličina:
+\begin{itemize}
+    \item $n = 2000$
+    \item $n = 5000$
+    \item $n = 10000$
+\end{itemize}
+
+Za svaki uzorak primenjeno je klasterovanje sa $k=5$ klastera, posebno za:
+\begin{enumerate}
+    \item skup bez vremenskih promenljivih (\texttt{\_E}),
+    \item prošireni skup sa vremenskim promenljivama.
+\end{enumerate}
+
+\subsubsection{Evaluacija klastera}
+
+Vizuelizacija rezultata izvršena je projektovanjem podataka u prostor prve dve glavne komponente (PCA).
+
+Uzorak n=2000:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.022 & 3.36 & 82.0 \\
+Sa vremenskim promenljivim  & 0.030 & 2.99 & 81.8 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uzorak n=5000:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.020 & 3.28 & 210.2 \\
+Sa vremenskim promenljivim  & 0.060 & 1.38 & 1083.6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uzorak n=10000:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.035 & 2.98 & 439.2 \\
+Sa vremenskim promenljivim  & 0.033 & 2.92 & 1661.9 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/agglomerative_ward.png}
+    \caption{Agglomerative Clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
+
+Projekcije podataka na prve dve glavne komponente (PCA) ukazuju na izraženo preklapanje između klastera u svim analiziranim uslovima (sa i bez uključivanja varijable vremena odgovaranja, pri različitim veličinama uzorka). Umesto jasno razdvojenih i kompaktnih grupa, uočava se kontinuirana distribucija tačaka sa postepenim prelazima između klastera.
+
+Vrednosti Silhouette indeksa kreću se u rasponu od približno 0.02 do 0.06, što ukazuje na veoma slabu klastersku separaciju. Niske vrednosti ovog indeksa sugerišu da su posmatranja podjednako bliska susednim klasterima kao i sopstvenom klasteru, odnosno da ne postoji izražena prirodna segmentacija podataka.
+
+Iako su u pojedinim uslovima zabeležene nešto povoljnije vrednosti Davies–Bouldin i Calinski–Harabasz indeksa, ta poboljšanja nisu praćena jasnim vizuelnim razdvajanjem grupa. Povećanje Calinski–Harabasz indeksa sa rastom veličine uzorka može se delimično objasniti njegovom osetljivošću na broj posmatranja, te se ne može tumačiti kao dokaz stabilne klasterske strukture.
+
+Sa smanjenim brojem klastera ($k=3$) primećeno je neznatno poboljšanje vrednosti Silhouette indeksa (maksimalno oko 0.07), međutim razlike u odnosu na rešenje sa većim brojem klastera nisu značajne i ne menjaju opšti obrazac rezultata.
+
+
+
+\subsection{Agglomerative Clustering sa single linkage metodom}
+
+Primena hijerarhijskog klasterovanja sa single linkage metodom dovela je do značajno viših vrednosti evaluacionih metrika u poređenju sa Ward-ovim kriterijumom.
+
+U nastavku su prikazani rezultati za različite veličine uzorka.
+
+Uzorak n=2000:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.248 & 0.537 & 3.6 \\
+Sa vremenskim promenljivim  & 0.671 & 0.183 & 37.6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uzorak n=5000:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.243 & 0.551 & 3.4 \\
+Sa vremenskim promenljivim  & 0.806 & 0.086 & 958.0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uzorak n=10000:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.263 & 0.548 & 3.4 \\
+Sa vremenskim promenljivim  & 0.894 & 0.050 & 1388.2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/agglomerative_single.png}
+    \caption{Agglomerative Clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
+Dobijene vrednosti Silhouette indeksa pri single linkage metodi dostižu visoke vrednosti (0.67–0.89) u slučaju uključivanja vremenskih promenljivih. Ipak, vizuelna inspekcija ne potvrđuje postojanje jasno razdvojenih klastera.
+
+Ovakav obrazac može se objasniti karakteristikama single linkage metode, koja je sklona formiranju jednog dominantnog klastera i nekoliko malih, udaljenih grupa (chaining efekat). 
+
+Evaluacione metrike mogu biti veštački poboljšane bez postojanja stabilne i interpretabilne klasterske strukture.
+
+U tom smislu, rezultati dobijeni Ward-ovim kriterijumom smatraju se pouzdanijim pokazateljem stvarne strukture podataka.
+
+
+
+
+
+\subsection{Agglomerative Clustering -- Complete linkage}
+
+Rezultati complete linkage metode prikazani su za tri veličine uzorka (n=2000, 5000 i 10000), sa i bez vremenskih promenljivih.
+
+
+
+
+Uzorak n=2000:
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.022 & 3.165 & 70.1 \\
+Sa vremenskim promenljivim & 0.671 & 0.183 & 37.6 \\
+\bottomrule
+\end{tabular}
+\caption{Complete linkage -- n=2000}
+\end{table}
+
+
+Uzorak n=5000:
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.018 & 3.860 & 145.0 \\
+Sa vremenskim promenljivim & 0.806 & 0.086 & 958.0 \\
+\bottomrule
+\end{tabular}
+\caption{Complete linkage -- n=5000}
+\end{table}
+
+
+Uzorak n=10000:
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.035 & 3.300 & 261.4 \\
+Sa vremenskim promenljivim & 0.863 & 0.288 & 1422.2 \\
+\bottomrule
+\end{tabular}
+\caption{Complete linkage -- n=10000}
+\end{table}
+
+Kod modela bez vremenskih promenljivih, vrednosti Silhouette indeksa ostaju veoma niske (0.018--0.035), dok je Davies-Bouldin indeks visok (3.165--3.860), što ukazuje na slabu separaciju i značajno preklapanje klastera. Vizuelna analiza PCA projekcije potvrđuje odsustvo jasno definisane klasterske strukture.
+
+Nasuprot tome, uključivanje vremenskih promenljivih dovodi do značajnog poboljšanja svih validacionih metrika. Silhouette indeks dostiže vrednosti između 0.671 i 0.863, dok Davies-Bouldin indeks opada ispod 0.3. Calinski-Harabasz indeks pokazuje snažan rast sa povećanjem veličine uzorka, što ukazuje na stabilniju i kompaktniju klastersku strukturu.
+
+Međutim, vizuelna analiza sugeriše postojanje jednog dominantnog klastera uz nekoliko manjih grupa, što može ukazivati na neravnomernu distribuciju veličina klastera karakterističnu za complete linkage metodu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/agglomerative_complete.png}
+    \caption{Agglomerative Clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
+\paragraph{Zaključak aglomerativne metode} 
+U okviru hijerarhijskog klasterovanja analizirane su tri varijante aglomerativne metode: Ward, Single i Complete linkage. Rezultati pokazuju značajne razlike u stabilnosti i kvalitetu formiranih klastera.
+
+Single linkage metoda pokazala je izražen chaining efekat za sve veličine uzorka i oba skupa podataka. Gotovo ceo skup podataka svrstavan je u jedan dominantan klaster, dok su preostali klasteri sadržali pojedinačne ili veoma mali broj instanci. Iako su pojedine validacione metrike bile visoke, distribucija klastera ukazuje na neadekvatnu segmentaciju podataka.
+
+Complete linkage metoda, bez vremenskih promenljivih, formira relativno uravnoteženije klastere, uz prisustvo manjih izolovanih grupa. Uključivanjem vremenskih promenljivih dolazi do izražene neravnoteže, gde jedan klaster obuhvata gotovo sve instance, dok su ostali klasteri minimalne veličine, što sugeriše ograničenu robusnost metode.
+
+Ward metoda pokazala je najveći stepen stabilnosti. Bez vremenskih promenljivih klasteri su relativno ravnomerno raspoređeni kroz sve veličine uzorka. Kod modela sa vremenskim promenljivim pojavljuju se manji izolovani klasteri, ali raspodela ostaje značajno uravnoteženija u poređenju sa Single i Complete metodama.
+
+Na osnovu analize validacionih metrika i distribucije veličina klastera može se zaključiti da Ward metoda predstavlja najstabilniji i metodološki najopravdaniji izbor unutar aglomerativnog pristupa za analizirani skup podataka.
 \subsection{Evaluacija rezultata}
 
 Rezultati klasterovanja upoređeni su korišćenjem sledećih metrika:
