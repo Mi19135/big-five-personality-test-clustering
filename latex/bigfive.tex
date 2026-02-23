@@ -481,6 +481,82 @@ Complete linkage metoda, bez vremenskih promenljivih, formira relativno uravnote
 Ward metoda pokazala je najveći stepen stabilnosti. Bez vremenskih promenljivih klasteri su relativno ravnomerno raspoređeni kroz sve veličine uzorka. Kod modela sa vremenskim promenljivim pojavljuju se manji izolovani klasteri, ali raspodela ostaje značajno uravnoteženija u poređenju sa Single i Complete metodama.
 
 Na osnovu analize validacionih metrika i distribucije veličina klastera može se zaključiti da Ward metoda predstavlja najstabilniji i metodološki najopravdaniji izbor unutar aglomerativnog pristupa za analizirani skup podataka.
+
+
+
+\subsection{DBSCAN analiza i uticaj parametra eps}
+
+DBSCAN metoda analizirana je za različite vrednosti parametra eps (5.5, 1.5 i 0.5) i četiri veličine uzorka.
+
+Pri vrednosti eps=5.5 formira se jedan dominantan klaster uz značajan broj instanci klasifikovanih kao šum (noise). U pojedinim slučajevima javljaju se i veoma mali klasteri sa svega nekoliko instanci. Međutim, validacione metrike (niske ili negativne vrednosti Silhouette indeksa i visoke vrednosti Davies-Bouldin indeksa) ukazuju na slabu separaciju klastera.
+
+Smanjenjem parametra eps na 1.5 i 0.5 dolazi do gotovo potpunog kolapsa klasterske strukture, pri čemu su gotovo sve instance označene kao šum. Ovo ukazuje na odsustvo jasno definisanih lokalnih gustinskih regiona u podacima.
+
+Rezultati su gotovo identični za skupove sa i bez vremenskih promenljivih, što sugeriše da vremenske promenljive ne utiču značajno na lokalnu gustinsku strukturu podataka.
+
+Na osnovu dobijenih rezultata može se zaključiti da DBSCAN metoda nije adekvatna za analizirani skup podataka, s obzirom na kontinuiranu distribuciju i odsustvo jasno razdvojenih gustinskih oblasti.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & -0.100 & 7.706 & 2.4 \\
+Sa vremenskim promenljivim & -0.109 & 7.957 & 2.0 \\
+\bottomrule
+\end{tabular}
+\caption{DBSCAN (eps=5.5) -- n=500}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.008 & 7.430 & 26.6 \\
+Sa vremenskim promenljivim & 0.005 & 7.591 & 24.4 \\
+\bottomrule
+\end{tabular}
+\caption{DBSCAN (eps=5.5) -- n=2000}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.033 & 6.367 & 84.7 \\
+Sa vremenskim promenljivim & -0.011 & 5.308 & 30.7 \\
+\bottomrule
+\end{tabular}
+\caption{DBSCAN (eps=5.5) -- n=5000}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.032 & 4.309 & 83.7 \\
+Sa vremenskim promenljivim & 0.032 & 4.446 & 48.7 \\
+\bottomrule
+\end{tabular}
+\caption{DBSCAN (eps=5.5) -- n=10000}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/dbscan.png}
+    \caption{DBSCAN ($eps=5.5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
 \subsection{Evaluacija rezultata}
 
 Rezultati klasterovanja upoređeni su korišćenjem sledećih metrika:
