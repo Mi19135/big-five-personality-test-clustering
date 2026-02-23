@@ -578,6 +578,8 @@ Takvo rešenje predstavlja kolaps komponenti u GMM modelu (component collapse), 
 
 Dobijeni rezultati ukazuju da povećanje dimenzionalnosti skupa atributa može dovesti do nestabilnosti procene kovarijacionih matrica u GMM modelu, posebno kod velikih uzoraka, što za posledicu ima degeneraciju klasterske strukture.
 
+Testiranje većeg broja komponenti nije dovelo do poboljšanja kvaliteta klastera.Kod modela bez \_E atributa metrika ostaje bliska nuli,dok kod modela sa \_E atributima dolazi do izraženog kolapsa komponenti pri većim uzorcima,čime se potvrđuje nestabilnost GMM modela u ovom skupu podataka.
+
 
 \begin{table}[H]
 \centering
@@ -626,6 +628,56 @@ Sa vremenskim promenljivim & 0.973 & 0.133 & 2633.8 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/gmm.png}
     \caption{GMM ($k=3$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
+\subsection{Spectral klasterovanje}
+
+Primena Spectral Clustering algoritma sa parametrom \textit{affinity = nearest\_neighbors} i brojem klastera $k=5$ pokazuje stabilnije ponašanje u odnosu na GMM model.
+
+Za uzorak od $n=2000$ dobijene su vrednosti Silhouette indeksa od približno 0.05, uz Davies-Bouldin indeks oko 3 i umerene vrednosti Calinski-Harabasz indeksa. Slični rezultati dobijeni su i za $n=5000$, pri čemu se Silhouette indeks blago povećava (~ 0.055), dok DB indeks ostaje umeren.
+
+Raspodela instanci po klasterima je relativno uravnotežena, bez pojave kolapsa komponenti, što ukazuje na numeričku stabilnost algoritma.
+
+Međutim, vrednosti Silhouette indeksa ostaju niske (~ 0.05), što ukazuje da klasteri nisu jasno razdvojeni u prostoru atributa. Vizuelna inspekcija PCA projekcija potvrđuje značajno preklapanje klastera.
+
+Dobijeni rezultati sugerišu postojanje slabe lokalne strukture podataka, ali bez izražene diskretne klasterske separacije.
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.053 & 2.972 & 110.9 \\
+Sa vremenskim promenljivim & 0.052 & 3.015 & 101.1 \\
+\bottomrule
+\end{tabular}
+\caption{Spectral clustering (k=5) -- n=2000}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.055 & 2.604 & 285.9 \\
+Sa vremenskim promenljivim & 0.057 & 2.684 & 139.5 \\
+\bottomrule
+\end{tabular}
+\caption{Spectral clustering (k=5) -- n=5000}
+\end{table}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/spectral_nearest_neighbors.png}
+    \caption{Spectral clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
     \label{fig:agg_compare}
 \end{figure}
 
