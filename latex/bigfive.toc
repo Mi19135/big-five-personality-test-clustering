@@ -27,7 +27,8 @@
 \contentsline {subsection}{\numberline {6.4}Agglomerative Clustering -- Complete linkage}{12}{subsection.6.4}%
 \contentsline {paragraph}{Zaključak aglomerativne metode}{14}{section*.14}%
 \contentsline {subsection}{\numberline {6.5}DBSCAN analiza i uticaj parametra eps}{15}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Evaluacija rezultata}{16}{subsection.6.6}%
-\contentsline {section}{\numberline {7}Rezultati}{16}{section.7}%
-\contentsline {section}{\numberline {8}Diskusija}{17}{section.8}%
-\contentsline {section}{\numberline {9}Zaključak}{17}{section.9}%
+\contentsline {subsection}{\numberline {6.6}Analiza raspodele klastera kod GMM modela}{17}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Evaluacija rezultata}{19}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Rezultati}{19}{section.7}%
+\contentsline {section}{\numberline {8}Diskusija}{20}{section.8}%
+\contentsline {section}{\numberline {9}Zaključak}{20}{section.9}%

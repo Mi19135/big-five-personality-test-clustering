@@ -557,6 +557,78 @@ Sa vremenskim promenljivim & 0.032 & 4.446 & 48.7 \\
     \label{fig:agg_compare}
 \end{figure}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/dbscan0.5.png}
+    \caption{DBSCAN ($eps=0.5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
+\subsection{Analiza raspodele klastera kod GMM modela}
+
+Analizom raspodele instanci po klasterima u okviru Gaussian Mixture Model (GMM) algoritma uočene su značajne razlike između modela sa osnovnim skupom atributa i modela proširenog dodatnim \_E atributima.
+
+Kod modela bez \_E atributa raspodela instanci po klasterima bila je relativno uravnotežena za sve veličine uzorka (2000, 5000 i 15000 slogova).
+Ovakvi rezultati ukazuju da model formira komponente približno sličnih veličina,ali bez jasne separacije,što potvrđuju vrlo niske vrijednosti Silhouette indeksa(~0).
+
+Međutim, kod modela sa \_E atributima primećena je izražena degeneracija modela. Već kod uzorka od 2000 slogova jedan klaster sadrži samo jednu instancu, dok dominantni klaster obuhvata većinu podataka. Ovaj efekat se dodatno pojačava sa povećanjem veličine uzorka. Kod uzorka od 15000 slogova raspodela iznosi [14997, 1, 2], što znači da gotovo sve instance pripadaju jednom klasteru, dok preostale komponente sadrže zanemarljiv broj instanci.
+
+Takvo rešenje predstavlja kolaps komponenti u GMM modelu (component collapse), pri čemu jedna Gaussova komponenta preuzima gotovo celu raspodelu podataka, dok ostale postaju numerički nestabilne. Iako ovakvo rešenje može rezultovati visokim vrednostima indeksa kao što je Silhouette koeficijent, ono ne predstavlja smisleno klastersko razdvajanje.
+
+Dobijeni rezultati ukazuju da povećanje dimenzionalnosti skupa atributa može dovesti do nestabilnosti procene kovarijacionih matrica u GMM modelu, posebno kod velikih uzoraka, što za posledicu ima degeneraciju klasterske strukture.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.004 & 7.020 & 39.2 \\
+Sa vremenskim promenljivim & 0.035 & 13.263 & 9.3 \\
+\bottomrule
+\end{tabular}
+\caption{GMM (k=3) -- n=2000}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & 0.002 & 9.045 & 88.3 \\
+Sa vremenskim promenljivim & 0.056 & 14.550 & 1567.1 \\
+\bottomrule
+\end{tabular}
+\caption{GMM (k=3) -- n=5000}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
+\midrule
+Bez vremenskih promenljivih & -0.001 & 9.946 & 283.4 \\
+Sa vremenskim promenljivim & 0.973 & 0.133 & 2633.8 \\
+\bottomrule
+\end{tabular}
+\caption{GMM (k=3) -- n=15000}
+\end{table}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/gmm.png}
+    \caption{GMM ($k=3$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:agg_compare}
+\end{figure}
+
 \subsection{Evaluacija rezultata}
 
 Rezultati klasterovanja upoređeni su korišćenjem sledećih metrika:
