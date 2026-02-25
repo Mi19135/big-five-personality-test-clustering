@@ -25,7 +25,9 @@
 \BOOKMARK [2][-]{subsection.6.6}{Analiza raspodele klastera kod GMM modela}{section.6}% 25
 \BOOKMARK [2][-]{subsection.6.7}{Spectral klasterovanje sa nearest-neighbors afinitetom}{section.6}% 26
 \BOOKMARK [2][-]{subsection.6.8}{Spectral Clustering sa RBF afinitetom}{section.6}% 27
-\BOOKMARK [2][-]{subsection.6.9}{Evaluacija rezultata}{section.6}% 28
-\BOOKMARK [1][-]{section.7}{Rezultati}{}% 29
-\BOOKMARK [1][-]{section.8}{Diskusija}{}% 30
-\BOOKMARK [1][-]{section.9}{Zakljucak}{}% 31
+\BOOKMARK [1][-]{section.7}{Poreenje algoritama klasterovanja}{}% 28
+\BOOKMARK [2][-]{subsection.7.1}{Alternativni pristupi}{section.7}% 29
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Nelinearna redukcija dimenzionalnosti \(UMAP\)}{subsection.7.1}% 30
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Analiza trodimenzionalnih kombinacija subskala}{subsection.7.1}% 31
+\BOOKMARK [1][-]{section.8}{Diskusija}{}% 32
+\BOOKMARK [1][-]{section.9}{Zakljucak}{}% 33

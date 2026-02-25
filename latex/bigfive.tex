@@ -332,7 +332,7 @@ Sa vremenskim promenljivim  & 0.033 & 2.92 & 1661.9 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/agglomerative_ward.png}
     \caption{Agglomerative Clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:agg_ward}
 \end{figure}
 
 
@@ -392,7 +392,7 @@ Sa vremenskim promenljivim  & 0.894 & 0.050 & 1388.2 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/agglomerative_single.png}
     \caption{Agglomerative Clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:agg_single}
 \end{figure}
 
 Dobijene vrednosti Silhouette indeksa pri single linkage metodi dostižu visoke vrednosti (0.67–0.89) u slučaju uključivanja vremenskih promenljivih. Ipak, vizuelna inspekcija ne potvrđuje postojanje jasno razdvojenih klastera.
@@ -468,7 +468,7 @@ Međutim, vizuelna analiza sugeriše postojanje jednog dominantnog klastera uz n
     \centering
     \includegraphics[width=\textwidth]{../slike/agglomerative_complete.png}
     \caption{Agglomerative Clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:agg_complete}
 \end{figure}
 
 \paragraph{Zaključak aglomerativne metode} 
@@ -554,7 +554,7 @@ Sa vremenskim promenljivim & 0.032 & 4.446 & 48.7 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/dbscan.png}
     \caption{DBSCAN ($eps=5.5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:dbscan5.5}
 \end{figure}
 
 
@@ -562,7 +562,7 @@ Sa vremenskim promenljivim & 0.032 & 4.446 & 48.7 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/dbscan0.5.png}
     \caption{DBSCAN ($eps=0.5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:dbscan0.5}
 \end{figure}
 
 \subsection{Analiza raspodele klastera kod GMM modela}
@@ -628,7 +628,7 @@ Sa vremenskim promenljivim & 0.973 & 0.133 & 2633.8 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/gmm.png}
     \caption{GMM ($k=3$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:gmm}
 \end{figure}
 
 \subsection{Spectral klasterovanje sa nearest-neighbors afinitetom}
@@ -678,7 +678,7 @@ Sa vremenskim promenljivim & 0.057 & 2.684 & 139.5 \\
     \centering
     \includegraphics[width=\textwidth]{../slike/spectral_nearest_neighbors.png}
     \caption{Spectral clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
-    \label{fig:agg_compare}
+    \label{fig:spec_neighbor}
 \end{figure}
 
 \subsection{Spectral Clustering sa RBF afinitetom}
@@ -716,29 +716,92 @@ ne doprinosi identifikaciji stabilnih i interpretabilnih
 klastera.
 
 
-\subsection{Evaluacija rezultata}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/gamma0.1.png}
+    \caption{Spectral clustering ($k=5$) sa rbf afinitetom ($\gamma=0.1$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:rbf1}
+\end{figure}
 
-Rezultati klasterovanja upoređeni su korišćenjem sledećih metrika:
 
-\begin{itemize}
-    \item Silhouette indeks
-    \item Davies--Bouldin indeks
-    \item Calinski--Harabasz indeks
-\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/gamma0.25.png}
+    \caption{Spectral clustering ($k=5$) sa rbf afinitetom ($\gamma=0.25$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:rbf0.25}
+\end{figure}
 
-Na osnovu ovih metrika vršeno je poređenje algoritama i izbor modela koji najbolje opisuje strukturu podataka.
 
-\section{Rezultati}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/gamma.05.png}
+    \caption{Spectral clustering ($k=5$) sa rbf afinitetom ($\gamma=0.5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \label{fig:rbf0.5}
+\end{figure}
 
-U ovom poglavlju biće prikazani:
+\section{Poređenje algoritama klasterovanja}
 
-\begin{itemize}
-    \item Tabele sa vrednostima evaluacionih metrika.
-    \item Vizualizacije klastera pomoću PCA projekcije.
-    \item Heatmap prikaz prosečnih vrednosti osobina po klasterima.
-\end{itemize}
+U okviru eksperimentalnog dela rada testirani su sledeći algoritmi klasterovanja:
+K-means, hijerarhijsko klasterovanje (Agglomerative, Ward metoda),
+DBSCAN, Gaussian Mixture Model (GMM) i Spectral Clustering sa RBF jezgrom.
 
-Na osnovu ovih rezultata izvršiće se interpretacija dobijenih grupa ispitanika.
+Evaluacija kvaliteta klastera izvršena je korišćenjem internih metrika:
+Silhouette koeficijenta, Davies–Bouldin (DB) indeksa i Calinski–Harabasz (CH) indeksa.
+
+
+\subsection{Alternativni pristupi}
+\subsubsection{Nelinearna redukcija dimenzionalnosti (UMAP)}
+
+Kako primena linearne redukcije dimenzionalnosti pomoću PCA nije rezultirala jasnom separacijom klastera, u daljoj analizi ispitana je mogućnost postojanja nelinearne strukture podataka. U tu svrhu primenjena je metoda Uniform Manifold Approximation and Projection (UMAP), koja omogućava očuvanje lokalne geometrije podataka i potencijalno bolje razdvajanje grupa u slučaju nelinearnih odnosa između promenljivih.
+
+UMAP projekcija izvršena je nad standardizovanim podacima, pri čemu je broj dimenzija reduciran na dve radi vizuelne interpretacije. Analiza je sprovedena za obe varijante skupa podataka (sa i bez dodatne varijable \_E), kako bi se ispitalo da li uključivanje dodatne informacije doprinosi jasnijoj strukturi prostora.
+
+Vizuelizacija u dvodimenzionalnom UMAP prostoru nije pokazala značajno izraženiju separaciju grupa u odnosu na rezultate dobijene PCA metodom. Podaci su formirali dominantnu, kompaktnu strukturu sa manjim brojem izdvojenih tačaka, bez jasnih granica između potencijalnih klastera. Uvođenje dodatne varijable \_E nije dovelo do vidljive diferencijacije grupa, već je projekcija postala još kompaktnija.
+
+Dobijeni rezultati sugerišu da ograničena separacija klastera nije posledica linearne prirode PCA metode, već verovatno odražava inherentnu strukturu samog skupa podataka. Drugim rečima, analiza nije ukazala na postojanje izražene nelinearne strukture koja bi omogućila jasnije razdvajanje klastera u niskodimenzionalnom prostoru.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/umap.png}
+    \caption{Poređenje PCA projekcija bez i sa vremenskim promenljivama}
+    \label{fig:umap}
+\end{figure}
+
+
+\subsubsection{Analiza trodimenzionalnih kombinacija subskala}
+
+Kako bi se dodatno ispitala potencijalna struktura podataka u nižedimenzionalnim prostorima, izvršena je analiza svih kombinacija po tri sumarne subskale (EXT, EST, AGR, CSN, OPN). Za svaku od $\binom{5}{3}=10$ mogućih trodimenzionalnih kombinacija primenjen je K-means algoritam sa unapred definisanim brojem klastera ($k=3$).
+
+Podaci su prethodno standardizovani, a analiza je sprovedena nad reprezentativnim uzorkom radi stabilnosti i preglednosti vizuelizacije. Za svaku kombinaciju izračunata je Silhouette mera u cilju procene kvaliteta klasterske separacije.
+
+Dobijene vrednosti Silhouette koeficijenta kretale su se u intervalu približno od 0.24 do 0.26, što ukazuje na slabu separaciju klastera i značajno preklapanje između grupa. Vizuelna inspekcija 3D projekcija dodatno potvrđuje ovaj nalaz: podaci formiraju dominantnu, kompaktnu strukturu bez jasno izraženih granica između potencijalnih klastera, uz prisustvo manjeg broja izdvojenih tačaka (outliera).
+
+Dodatno je ispitana i varijanta sa dva klastera ($k=2$), pri čemu su dobijene visoke vrednosti Silhouette koeficijenta (~0.8). Međutim, detaljna analiza pokazuje da se u tom slučaju jedan klaster sastoji gotovo od celokupnog skupa podataka, dok drugi obuhvata mali broj ekstremnih vrednosti. Takva struktura ukazuje na izolaciju outliera, a ne na postojanje dve stabilne i interpretabilne grupe.
+
+Rezultati ove analize sugerišu da u trodimenzionalnim podprostorima sumiranih osobina ne postoji izražena prirodna segmentacija podataka. Uočena struktura više odgovara kontinuumu osobina nego postojanju diskretnih tipova.
+
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{../slike/3d1.png}
+    	\caption{}
+    	\label{fig:3d1}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+    	\centering
+        \includegraphics[width=\textwidth]{../slike/3d2.png}
+   		\caption{}
+    	\label{fig:3d2}
+	\end{subfigure}
+	\caption{Primeri trodimenzionalnih kombinacija subskala za ($k=3$)}
+	\label{fig:3dcmp}
+\end{figure}
+
 
 \section{Diskusija}
 
