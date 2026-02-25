@@ -631,7 +631,7 @@ Sa vremenskim promenljivim & 0.973 & 0.133 & 2633.8 \\
     \label{fig:agg_compare}
 \end{figure}
 
-\subsection{Spectral klasterovanje}
+\subsection{Spectral klasterovanje sa nearest-neighbors afinitetom}
 
 Primena Spectral Clustering algoritma sa parametrom \textit{affinity = nearest\_neighbors} i brojem klastera $k=5$ pokazuje stabilnije ponašanje u odnosu na GMM model.
 
@@ -680,6 +680,41 @@ Sa vremenskim promenljivim & 0.057 & 2.684 & 139.5 \\
     \caption{Spectral clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
     \label{fig:agg_compare}
 \end{figure}
+
+\subsection{Spectral Clustering sa RBF afinitetom}
+
+U ovom delu istraživanja primenjen je Spectral Clustering sa RBF
+(gaussovskim) afinitetom za različite vrednosti parametra $\gamma$
+(0.1, 0.25 i 0.5) i veličine uzorka (1000 i 2000 slogova).
+
+Rezultati pokazuju izrazitu nestabilnost modela, naročito kod
+proširenog skupa atributa (sa \_E promenljivama).
+
+Za manje vrednosti parametra $\gamma$ primećena je velika
+neravnoteža klastera, dok sa povećanjem $\gamma$ dolazi do
+potpunog kolapsa modela, gde gotovo svi slogovi bivaju dodeljeni
+jednom dominantnom klasteru, uz pojavu nekoliko izolovanih
+jedinica.
+
+Primer raspodele klastera za $\gamma=0.5$ i $n=2000$:
+
+\begin{itemize}
+\item Bez \_E: [1966, 2, 1, 14, 17]
+\item Sa \_E: [0, 1, 1999]
+\end{itemize}
+
+Ovakva struktura ukazuje da podaci nemaju izraženu
+nelinearnu klastersku strukturu koju Spectral Clustering
+može da detektuje.
+
+Vizuelna analiza PCA projekcija potvrđuje da slogovi
+formiraju gust kontinuiran oblak bez jasno razdvojenih
+grupa.
+
+Može se zaključiti da primena RBF afiniteta u ovom slučaju
+ne doprinosi identifikaciji stabilnih i interpretabilnih
+klastera.
+
 
 \subsection{Evaluacija rezultata}
 
