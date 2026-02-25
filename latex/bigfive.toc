@@ -25,14 +25,14 @@
 \contentsline {subsubsection}{\numberline {6.2.1}Evaluacija klastera}{9}{subsubsection.6.2.1}%
 \contentsline {subsection}{\numberline {6.3}Agglomerative Clustering sa single linkage metodom}{11}{subsection.6.3}%
 \contentsline {subsection}{\numberline {6.4}Agglomerative Clustering -- Complete linkage}{12}{subsection.6.4}%
-\contentsline {paragraph}{Zaključak aglomerativne metode}{14}{section*.14}%
-\contentsline {subsection}{\numberline {6.5}DBSCAN analiza i uticaj parametra eps}{15}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Analiza raspodele klastera kod GMM modela}{17}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Spectral klasterovanje sa nearest-neighbors afinitetom}{19}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Spectral Clustering sa RBF afinitetom}{21}{subsection.6.8}%
-\contentsline {section}{\numberline {7}Poređenje algoritama klasterovanja}{22}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Alternativni pristupi}{23}{subsection.7.1}%
-\contentsline {subsubsection}{\numberline {7.1.1}Nelinearna redukcija dimenzionalnosti (UMAP)}{23}{subsubsection.7.1.1}%
-\contentsline {subsubsection}{\numberline {7.1.2}Analiza trodimenzionalnih kombinacija subskala}{23}{subsubsection.7.1.2}%
-\contentsline {section}{\numberline {8}Diskusija}{24}{section.8}%
-\contentsline {section}{\numberline {9}Zaključak}{25}{section.9}%
+\contentsline {paragraph}{Zaključak aglomerativne metode}{12}{section*.11}%
+\contentsline {subsection}{\numberline {6.5}DBSCAN analiza i uticaj parametra eps}{13}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Analiza raspodele klastera kod GMM modela}{15}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Spectral klasterovanje sa nearest-neighbors afinitetom}{16}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Spectral Clustering sa RBF afinitetom}{17}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Poređenje algoritama klasterovanja}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Alternativni pristupi}{20}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}Nelinearna redukcija dimenzionalnosti (UMAP)}{20}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.2}Analiza trodimenzionalnih kombinacija subskala}{20}{subsubsection.7.1.2}%
+\contentsline {section}{\numberline {8}Diskusija}{22}{section.8}%
+\contentsline {section}{\numberline {9}Zaključak}{22}{section.9}%

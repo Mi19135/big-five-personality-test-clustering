@@ -289,44 +289,6 @@ Za svaki uzorak primenjeno je klasterovanje sa $k=5$ klastera, posebno za:
 
 Vizuelizacija rezultata izvršena je projektovanjem podataka u prostor prve dve glavne komponente (PCA).
 
-Uzorak n=2000:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.022 & 3.36 & 82.0 \\
-Sa vremenskim promenljivim  & 0.030 & 2.99 & 81.8 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Uzorak n=5000:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.020 & 3.28 & 210.2 \\
-Sa vremenskim promenljivim  & 0.060 & 1.38 & 1083.6 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Uzorak n=10000:
-
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.035 & 2.98 & 439.2 \\
-Sa vremenskim promenljivim  & 0.033 & 2.92 & 1661.9 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-
 
 \begin{figure}[H]
     \centering
@@ -351,42 +313,6 @@ Sa smanjenim brojem klastera ($k=3$) primećeno je neznatno poboljšanje vrednos
 Primena hijerarhijskog klasterovanja sa single linkage metodom dovela je do značajno viših vrednosti evaluacionih metrika u poređenju sa Ward-ovim kriterijumom.
 
 U nastavku su prikazani rezultati za različite veličine uzorka.
-
-Uzorak n=2000:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.248 & 0.537 & 3.6 \\
-Sa vremenskim promenljivim  & 0.671 & 0.183 & 37.6 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Uzorak n=5000:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.243 & 0.551 & 3.4 \\
-Sa vremenskim promenljivim  & 0.806 & 0.086 & 958.0 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Uzorak n=10000:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.263 & 0.548 & 3.4 \\
-Sa vremenskim promenljivim  & 0.894 & 0.050 & 1388.2 \\
-\bottomrule
-\end{tabular}
-\end{center}
 
 \begin{figure}[H]
     \centering
@@ -414,49 +340,6 @@ Rezultati complete linkage metode prikazani su za tri veličine uzorka (n=2000, 
 
 
 
-Uzorak n=2000:
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.022 & 3.165 & 70.1 \\
-Sa vremenskim promenljivim & 0.671 & 0.183 & 37.6 \\
-\bottomrule
-\end{tabular}
-\caption{Complete linkage -- n=2000}
-\end{table}
-
-
-Uzorak n=5000:
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.018 & 3.860 & 145.0 \\
-Sa vremenskim promenljivim & 0.806 & 0.086 & 958.0 \\
-\bottomrule
-\end{tabular}
-\caption{Complete linkage -- n=5000}
-\end{table}
-
-
-Uzorak n=10000:
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.035 & 3.300 & 261.4 \\
-Sa vremenskim promenljivim & 0.863 & 0.288 & 1422.2 \\
-\bottomrule
-\end{tabular}
-\caption{Complete linkage -- n=10000}
-\end{table}
 
 Kod modela bez vremenskih promenljivih, vrednosti Silhouette indeksa ostaju veoma niske (0.018--0.035), dok je Davies-Bouldin indeks visok (3.165--3.860), što ukazuje na slabu separaciju i značajno preklapanje klastera. Vizuelna analiza PCA projekcije potvrđuje odsustvo jasno definisane klasterske strukture.
 
@@ -496,60 +379,6 @@ Rezultati su gotovo identični za skupove sa i bez vremenskih promenljivih, što
 
 Na osnovu dobijenih rezultata može se zaključiti da DBSCAN metoda nije adekvatna za analizirani skup podataka, s obzirom na kontinuiranu distribuciju i odsustvo jasno razdvojenih gustinskih oblasti.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & -0.100 & 7.706 & 2.4 \\
-Sa vremenskim promenljivim & -0.109 & 7.957 & 2.0 \\
-\bottomrule
-\end{tabular}
-\caption{DBSCAN (eps=5.5) -- n=500}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.008 & 7.430 & 26.6 \\
-Sa vremenskim promenljivim & 0.005 & 7.591 & 24.4 \\
-\bottomrule
-\end{tabular}
-\caption{DBSCAN (eps=5.5) -- n=2000}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.033 & 6.367 & 84.7 \\
-Sa vremenskim promenljivim & -0.011 & 5.308 & 30.7 \\
-\bottomrule
-\end{tabular}
-\caption{DBSCAN (eps=5.5) -- n=5000}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.032 & 4.309 & 83.7 \\
-Sa vremenskim promenljivim & 0.032 & 4.446 & 48.7 \\
-\bottomrule
-\end{tabular}
-\caption{DBSCAN (eps=5.5) -- n=10000}
-\end{table}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../slike/dbscan.png}
@@ -581,46 +410,6 @@ Dobijeni rezultati ukazuju da povećanje dimenzionalnosti skupa atributa može d
 Testiranje većeg broja komponenti nije dovelo do poboljšanja kvaliteta klastera.Kod modela bez \_E atributa metrika ostaje bliska nuli,dok kod modela sa \_E atributima dolazi do izraženog kolapsa komponenti pri većim uzorcima,čime se potvrđuje nestabilnost GMM modela u ovom skupu podataka.
 
 
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.004 & 7.020 & 39.2 \\
-Sa vremenskim promenljivim & 0.035 & 13.263 & 9.3 \\
-\bottomrule
-\end{tabular}
-\caption{GMM (k=3) -- n=2000}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.002 & 9.045 & 88.3 \\
-Sa vremenskim promenljivim & 0.056 & 14.550 & 1567.1 \\
-\bottomrule
-\end{tabular}
-\caption{GMM (k=3) -- n=5000}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & -0.001 & 9.946 & 283.4 \\
-Sa vremenskim promenljivim & 0.973 & 0.133 & 2633.8 \\
-\bottomrule
-\end{tabular}
-\caption{GMM (k=3) -- n=15000}
-\end{table}
 
 
 
@@ -642,36 +431,6 @@ Raspodela instanci po klasterima je relativno uravnotežena, bez pojave kolapsa 
 Međutim, vrednosti Silhouette indeksa ostaju niske (~ 0.05), što ukazuje da klasteri nisu jasno razdvojeni u prostoru atributa. Vizuelna inspekcija PCA projekcija potvrđuje značajno preklapanje klastera.
 
 Dobijeni rezultati sugerišu postojanje slabe lokalne strukture podataka, ali bez izražene diskretne klasterske separacije.
-
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.053 & 2.972 & 110.9 \\
-Sa vremenskim promenljivim & 0.052 & 3.015 & 101.1 \\
-\bottomrule
-\end{tabular}
-\caption{Spectral clustering (k=5) -- n=2000}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Skup podataka & Silhouette & Davies-Bouldin & Calinski-Harabasz \\
-\midrule
-Bez vremenskih promenljivih & 0.055 & 2.604 & 285.9 \\
-Sa vremenskim promenljivim & 0.057 & 2.684 & 139.5 \\
-\bottomrule
-\end{tabular}
-\caption{Spectral clustering (k=5) -- n=5000}
-\end{table}
-
 
 
 \begin{figure}[H]
@@ -802,6 +561,25 @@ Rezultati ove analize sugerišu da u trodimenzionalnim podprostorima sumiranih o
 	\label{fig:3dcmp}
 \end{figure}
 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{../slike/3d3.png}
+    	\caption{}
+    	\label{fig:3d3}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+    	\centering
+        \includegraphics[width=\textwidth]{../slike/3d4.png}
+   		\caption{}
+    	\label{fig:3d4}
+	\end{subfigure}
+	\caption{Primeri trodimenzionalnih kombinacija subskala za ($k=2$)}
+	\label{fig:3dcmp}
+\end{figure}
 
 \section{Diskusija}
 
