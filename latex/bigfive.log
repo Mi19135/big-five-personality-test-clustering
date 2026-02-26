@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.19)  25 FEB 2026 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.19)  26 FEB 2026 10:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -334,7 +334,11 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count278
 \l__pdf_internal_box=\box49
 )
-(./bigfive.aux)
+(./bigfive.aux
+
+LaTeX Warning: Label `fig:3dcmp' multiply defined.
+
+)
 \openout1 = `bigfive.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -353,8 +357,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count279
 \scratchdimen=\dimen179
@@ -442,7 +445,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout4 = `bigfive.toc'.
 
  [2]
-<../slike/bigfive.png, id=186, 1267.73625pt x 831.105pt>
+<../slike/bigfive.png, id=196, 1267.73625pt x 831.105pt>
 File: ../slike/bigfive.png Graphic file (type png)
 <use ../slike/bigfive.png>
 Package pdftex.def Info: ../slike/bigfive.png  used on input line 50.
@@ -461,77 +464,77 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                removing `\textasciicaron' on input line 126.
 
 [5]
-<../slike/pca_comparison.png, id=204, 1003.8303pt x 426.393pt>
+<../slike/pca_comparison.png, id=214, 1003.8303pt x 426.393pt>
 File: ../slike/pca_comparison.png Graphic file (type png)
 <use ../slike/pca_comparison.png>
 Package pdftex.def Info: ../slike/pca_comparison.png  used on input line 183.
 (pdftex.def)             Requested size: 455.24411pt x 193.3715pt.
  [6] [7 <../slike/pca_comparison.png>]
-<../slike/kmeans_comparison5.png, id=220, 1076.1003pt x 426.393pt>
+<../slike/kmeans_comparison5.png, id=230, 1076.1003pt x 426.393pt>
 File: ../slike/kmeans_comparison5.png Graphic file (type png)
 <use ../slike/kmeans_comparison5.png>
 Package pdftex.def Info: ../slike/kmeans_comparison5.png  used on input line 23
 4.
 (pdftex.def)             Requested size: 455.24411pt x 180.38507pt.
  [8 <../slike/kmeans_comparison5.png>]
-<../slike/agglomerative_ward.png, id=231, 1003.8303pt x 859.2903pt>
+<../slike/agglomerative_ward.png, id=241, 1003.8303pt x 859.2903pt>
 File: ../slike/agglomerative_ward.png Graphic file (type png)
 <use ../slike/agglomerative_ward.png>
 Package pdftex.def Info: ../slike/agglomerative_ward.png  used on input line 29
 5.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
 [9] [10 <../slike/agglomerative_ward.png>]
-<../slike/agglomerative_single.png, id=245, 1003.8303pt x 859.2903pt>
+<../slike/agglomerative_single.png, id=255, 1003.8303pt x 859.2903pt>
 File: ../slike/agglomerative_single.png Graphic file (type png)
 <use ../slike/agglomerative_single.png>
 Package pdftex.def Info: ../slike/agglomerative_single.png  used on input line 
 319.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
  [11 <../slike/agglomerative_single.png>]
-<../slike/agglomerative_complete.png, id=252, 1003.8303pt x 859.2903pt>
+<../slike/agglomerative_complete.png, id=262, 1003.8303pt x 859.2903pt>
 File: ../slike/agglomerative_complete.png Graphic file (type png)
 <use ../slike/agglomerative_complete.png>
 Package pdftex.def Info: ../slike/agglomerative_complete.png  used on input lin
 e 352.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
  [12 <../slike/agglomerative_complete.png>]
-<../slike/dbscan.png, id=260, 1003.8303pt x 859.2903pt>
+<../slike/dbscan.png, id=270, 1003.8303pt x 859.2903pt>
 File: ../slike/dbscan.png Graphic file (type png)
 <use ../slike/dbscan.png>
 Package pdftex.def Info: ../slike/dbscan.png  used on input line 384.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
  [13]
-<../slike/dbscan0.5.png, id=266, 1003.8303pt x 859.2903pt>
+<../slike/dbscan0.5.png, id=276, 1003.8303pt x 859.2903pt>
 File: ../slike/dbscan0.5.png Graphic file (type png)
 <use ../slike/dbscan0.5.png>
 Package pdftex.def Info: ../slike/dbscan0.5.png  used on input line 392.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
  [14 <../slike/dbscan.png>] [15 <../slike/dbscan0.5.png>]
-<../slike/gmm.png, id=279, 1003.8303pt x 859.2903pt>
+<../slike/gmm.png, id=289, 1003.8303pt x 859.2903pt>
 File: ../slike/gmm.png Graphic file (type png)
 <use ../slike/gmm.png>
 Package pdftex.def Info: ../slike/gmm.png  used on input line 418.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
  [16 <../slike/gmm.png>]
-<../slike/spectral_nearest_neighbors.png, id=286, 1003.8303pt x 859.2903pt>
+<../slike/spectral_nearest_neighbors.png, id=296, 1003.8303pt x 859.2903pt>
 File: ../slike/spectral_nearest_neighbors.png Graphic file (type png)
 <use ../slike/spectral_nearest_neighbors.png>
 Package pdftex.def Info: ../slike/spectral_nearest_neighbors.png  used on input
  line 438.
 (pdftex.def)             Requested size: 455.24411pt x 389.69275pt.
  [17 <../slike/spectral_nearest_neighbors.png>]
-<../slike/gamma0.1.png, id=293, 1003.8303pt x 570.933pt>
+<../slike/gamma0.1.png, id=304, 1003.8303pt x 570.933pt>
 File: ../slike/gamma0.1.png Graphic file (type png)
 <use ../slike/gamma0.1.png>
 Package pdftex.def Info: ../slike/gamma0.1.png  used on input line 480.
 (pdftex.def)             Requested size: 455.24411pt x 258.92116pt.
-<../slike/gamma0.25.png, id=294, 1003.8303pt x 570.933pt>
+<../slike/gamma0.25.png, id=305, 1003.8303pt x 570.933pt>
 File: ../slike/gamma0.25.png Graphic file (type png)
 <use ../slike/gamma0.25.png>
 Package pdftex.def Info: ../slike/gamma0.25.png  used on input line 488.
 (pdftex.def)             Requested size: 455.24411pt x 258.92116pt.
  [18 <../slike/gamma0.1.png>]
-<../slike/gamma.05.png, id=302, 1003.8303pt x 570.933pt>
+<../slike/gamma.05.png, id=312, 1003.8303pt x 570.933pt>
 File: ../slike/gamma.05.png Graphic file (type png)
 <use ../slike/gamma.05.png>
 Package pdftex.def Info: ../slike/gamma.05.png  used on input line 496.
@@ -542,58 +545,70 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\dj' on input line 501.
 
 [19 <../slike/gamma0.25.png> <../slike/gamma.05.png>]
-<../slike/umap.png, id=312, 859.2903pt x 354.123pt>
+<../slike/umap.png, id=322, 859.2903pt x 354.123pt>
 File: ../slike/umap.png Graphic file (type png)
 <use ../slike/umap.png>
 Package pdftex.def Info: ../slike/umap.png  used on input line 525.
 (pdftex.def)             Requested size: 455.24411pt x 187.60863pt.
  [20 <../slike/umap.png>]
-<../slike/3d1.png, id=321, 355.5684pt x 380.8629pt>
+<../slike/3d1.png, id=331, 355.5684pt x 380.8629pt>
 File: ../slike/3d1.png Graphic file (type png)
 <use ../slike/3d1.png>
 Package pdftex.def Info: ../slike/3d1.png  used on input line 549.
 (pdftex.def)             Requested size: 218.51521pt x 234.05785pt.
-<../slike/3d2.png, id=322, 355.5684pt x 380.8629pt>
+<../slike/3d2.png, id=332, 355.5684pt x 380.8629pt>
 File: ../slike/3d2.png Graphic file (type png)
 <use ../slike/3d2.png>
 Package pdftex.def Info: ../slike/3d2.png  used on input line 556.
 (pdftex.def)             Requested size: 218.51521pt x 234.05785pt.
-<../slike/3d3.png, id=323, 355.5684pt x 380.8629pt>
+<../slike/3d3.png, id=333, 355.5684pt x 380.8629pt>
 File: ../slike/3d3.png Graphic file (type png)
 <use ../slike/3d3.png>
 Package pdftex.def Info: ../slike/3d3.png  used on input line 569.
 (pdftex.def)             Requested size: 218.51521pt x 234.05785pt.
-<../slike/3d4.png, id=324, 355.5684pt x 380.8629pt>
+<../slike/3d4.png, id=334, 355.5684pt x 380.8629pt>
 File: ../slike/3d4.png Graphic file (type png)
 <use ../slike/3d4.png>
 Package pdftex.def Info: ../slike/3d4.png  used on input line 576.
 (pdftex.def)             Requested size: 218.51521pt x 234.05785pt.
 
 [21 <../slike/3d1.png> <../slike/3d2.png>]
+<../slike/5subskala.png, id=343, 407.6028pt x 419.8887pt>
+File: ../slike/5subskala.png Graphic file (type png)
+<use ../slike/5subskala.png>
+Package pdftex.def Info: ../slike/5subskala.png  used on input line 608.
+(pdftex.def)             Requested size: 455.24411pt x 468.97153pt.
+ [22 <../slike/3d3.png> <../slike/3d4.png>] [23 <../slike/5subskala.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 594.
+(hyperref)                removing `\textasciicaron' on input line 646.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 598.
-[22 <../slike/3d3.png> <../slike/3d4.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 598.
+[24]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 655.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 668.
+[25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 668.
  (./bigfive.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 598.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 598.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 668.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 668.
 Package rerunfilecheck Info: File `bigfive.out' has not changed.
-(rerunfilecheck)             Checksum: 9E1E4A52391DEE81CFA563544CC53C3B;2482.
+(rerunfilecheck)             Checksum: 633336B35229D07C034151896FCD3A2F;2703.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 598.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 668.
  ) 
 Here is how much of TeX's memory you used:
- 8641 strings out of 481239
- 131935 string characters out of 5920377
- 412169 words of memory out of 5000000
- 23662 multiletter control sequences out of 15000+600000
+ 8662 strings out of 481239
+ 132254 string characters out of 5920377
+ 412449 words of memory out of 5000000
+ 23670 multiletter control sequences out of 15000+600000
  545393 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,7n,42p,488b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -611,10 +626,10 @@ texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/pu
 blic/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm20
 74.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/t
 exmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on bigfive.pdf (22 pages, 8393382 bytes).
+Output written on bigfive.pdf (25 pages, 8488399 bytes).
 PDF statistics:
- 412 PDF objects out of 1000 (max. 8388607)
- 334 compressed objects within 4 object streams
- 81 named destinations out of 1000 (max. 500000)
- 355 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 446 PDF objects out of 1000 (max. 8388607)
+ 363 compressed objects within 4 object streams
+ 93 named destinations out of 1000 (max. 500000)
+ 376 words of extra memory for PDF output out of 10000 (max. 10000000)
 

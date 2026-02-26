@@ -34,5 +34,7 @@
 \contentsline {subsection}{\numberline {7.1}Alternativni pristupi}{20}{subsection.7.1}%
 \contentsline {subsubsection}{\numberline {7.1.1}Nelinearna redukcija dimenzionalnosti (UMAP)}{20}{subsubsection.7.1.1}%
 \contentsline {subsubsection}{\numberline {7.1.2}Analiza trodimenzionalnih kombinacija subskala}{20}{subsubsection.7.1.2}%
-\contentsline {section}{\numberline {8}Diskusija}{22}{section.8}%
-\contentsline {section}{\numberline {9}Zaključak}{22}{section.9}%
+\contentsline {subsubsection}{\numberline {7.1.3}K-means klasterovanje nad svih pet subskala}{22}{subsubsection.7.1.3}%
+\contentsline {section}{\numberline {8}Uporedna analiza primenjenih metoda klasterovanja}{23}{section.8}%
+\contentsline {section}{\numberline {9}Opšti zaključak}{24}{section.9}%
+\contentsline {section}{\numberline {10}Diskusija i završni zaključci}{25}{section.10}%

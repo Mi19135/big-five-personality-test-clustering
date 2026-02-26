@@ -17,7 +17,7 @@
 \title{\textbf{Analiza strukture ličnosti primenom metoda klasterovanja}\\Projekat iz Istraživanja podataka 2 
 [R275]}
 \author{Ksenija Ivanović 135/2019}
-\date{Školska 2025/26 godina}
+\date{Školska 2025/26. godina}
 
 \begin{document}
 
@@ -581,18 +581,88 @@ Rezultati ove analize sugerišu da u trodimenzionalnim podprostorima sumiranih o
 	\label{fig:3dcmp}
 \end{figure}
 
-\section{Diskusija}
 
-U ovom delu rada razmatra se:
+\subsubsection{K-means klasterovanje nad svih pet subskala}
 
-\begin{itemize}
-    \item Da li postoji jasna prirodna struktura u podacima.
-    \item Koliko su klasteri stabilni i interpretabilni.
-    \item Ograničenja primenjenog pristupa.
-\end{itemize}
+Klaster analiza je sprovedena nad pet sumiranih i standardizovanih subskala (EXT, EST, AGR, CSN i OPN). Nakon standardizacije podataka, izdvojen je uzorak od 15\,000 ispitanika radi stabilnosti i računske efikasnosti analize. Primenjen je K-means algoritam sa unapred definisanim brojem klastera $k=3$.
 
-\section{Zaključak}
+Dobijene veličine klastera bile su:
 
-U zaključku će biti sumirani ključni nalazi rada, uz osvrt na pitanje da li Big Five podaci pokazuju postojanje diskretnih tipova ličnosti ili pre predstavljaju kontinuirani spektar osobina.
+\[
+[7864,\; 7040,\; 96]
+\]
+
+što ukazuje na izrazitu neravnotežu, pri čemu treći klaster obuhvata veoma mali broj ispitanika u odnosu na preostala dva.
+
+
+Vrednost Silhouette koeficijenta od 0.181 ukazuje na slabu separaciju klastera i značajno preklapanje između grupa. Davies–Bouldin indeks dodatno potvrđuje ograničenu kompaktnost i razdvojenost klastera, dok Calinski–Harabasz indeks sugeriše postojanje određene strukture, ali ne i jasno izražene segmentacije.
+
+Vizuelizacija u trodimenzionalnom PCA prostoru pokazuje dominantnu, kontinuiranu distribuciju podataka bez jasnih granica između klastera. Treći klaster, koji je znatno manjeg obima, verovatno predstavlja skup ekstremnih vrednosti (outliera), a ne stabilnu i interpretabilnu grupu ispitanika.
+
+Ovi rezultati ukazuju da u prostoru svih pet subskala ne postoji izražena prirodna klasterska struktura, već da podaci pre formiraju kontinuum osobina nego diskretne tipološke grupe.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../slike/5subskala.png}
+    \caption{K-means klasterovanje nad svih 5 subskala u trodimenzionalnom prostoru}
+    \label{fig:5subs}
+\end{figure}
+
+
+\section{Uporedna analiza primenjenih metoda klasterovanja}
+
+U cilju identifikacije potencijalne latentne strukture podataka, primenjeno je više različitih metoda klasterovanja: K-means, hijerarhijsko klasterovanje (Agglomerative), Gaussian Mixture Model (GMM), Spectral clustering, kao i analiza kroz dimenzionalnu redukciju (PCA i UMAP).
+
+\subsection*{K-means}
+
+K-means je pokazao konzistentno niske vrednosti Silhouette koeficijenta (~0.18–0.26) za $k=3$, uz izraženu neravnotežu u veličinama klastera. U varijanti sa $k=2$ dobijene su visoke Silhouette vrednosti (~0.8), ali je detaljna analiza pokazala da se radi o odvajanju malog broja ekstremnih vrednosti od dominantne mase podataka, a ne o postojanju dve stabilne grupe.
+
+\subsection*{Hijerarhijsko klasterovanje}
+
+Rezultati hijerarhijskog pristupa bili su u skladu sa K-means metodom, bez jasne i stabilne segmentacije. Formirani klasteri pokazivali su značajno preklapanje i odsustvo izraženih granica između grupa.
+
+
+\subsection*{DBSCAN}
+
+DBSCAN, kao gustinom vođena metoda klasterovanja koja ne zahteva unapred definisan broj klastera, primenjen je sa ciljem detekcije eventualnih nelinearnih i nepravilno oblikovanih struktura u podacima. Rezultati su pokazali da algoritam u najvećoj meri identifikuje jednu dominantnu grupu, dok ostatak tačaka često klasifikuje kao šum (noise), u zavisnosti od izabranih parametara ($\varepsilon$ i \textit{min\_samples}).
+
+Nije uočena stabilna segmentacija u više jasno diferenciranih klastera, već se struktura podataka ponovo pokazala kao kompaktna i kontinuirana, bez izražene gustinske separacije. Ovakav nalaz dodatno potvrđuje odsustvo prirodne klasterske organizacije u posmatranom prostoru osobina.
+
+\subsection*{Gaussian Mixture Model (GMM)}
+
+GMM, kao probabilistički model koji omogućava meke granice između klastera, nije identifikovao jasno razdvojene distribucije. Komponente su pokazivale značajno preklapanje, što dodatno sugeriše odsustvo multimodalne strukture u podacima.
+
+\subsection*{Spectral clustering}
+
+
+Primena spektralnog pristupa, koji je pogodan za nelinearne strukture, nije dovela do značajno boljeg razdvajanja klastera u odnosu na prethodne metode. Dobijeni rezultati bili su konzistentni sa nalazima ostalih algoritama.
+
+\subsection*{Dimenzionalna redukcija (PCA i UMAP)}
+
+PCA projekcije nisu pokazale jasno odvojene grupe u nižedimenzionalnom prostoru. UMAP, kao nelinearna metoda, takođe nije otkrio izražene separacije, već je potvrdio postojanje kompaktne, kontinuirane distribucije podataka bez jasnih klasterskih granica.
+
+\section{Opšti zaključak}
+
+Uporedna analiza svih primenjenih metoda pokazuje visok stepen konzistentnosti rezultata. Bez obzira na metodološki pristup — linearni, nelinearni, probabilistički ili graf-bazirani — nije identifikovana stabilna i interpretabilna klasterska struktura.
+
+Dobijeni nalazi ukazuju da podaci ne poseduju izraženu multimodalnost niti diskretne tipološke grupe, već da pre predstavljaju kontinuum osobina. Uočene segmentacije uglavnom su rezultat izolacije ekstremnih vrednosti, a ne prirodno formiranih grupa.
+
+Ovakav obrazac je u skladu sa teorijskim pretpostavkama o kontinuiranoj prirodi osobina ličnosti, gde se individualne razlike bolje opisuju kroz dimenzionalni model nego kroz tipološku klasifikaciju.
+
+
+\section{Diskusija i završni zaključci}
+
+Bez obzira na razlike u teorijskoj osnovi i matematičkom principu rada ovih algoritama, rezultati su pokazali visok stepen međusobne konzistentnosti. Ni jedna metoda nije identifikovala stabilnu, jasno separabilnu i interpretabilnu strukturu klastera. Uočene segmentacije uglavnom su bile rezultat izdvajanja malog broja ekstremnih vrednosti ili artefakta algoritamske optimizacije, a ne odraz prirodno formiranih grupa u podacima.
+
+Posebno je značajno da ni nelinearne metode (UMAP, Spectral clustering), koje su pogodne za otkrivanje kompleksnih geometrijskih obrazaca, nisu pokazale postojanje skrivenih nelinearnih separacija. Vizuelizacije u nižedimenzionalnom prostoru dosledno su ukazivale na kompaktan i kontinuiran raspored podataka, bez jasno definisanih granica između potencijalnih grupa.
+
+Ovakvi nalazi sugerišu da se posmatrane osobine ne organizuju u diskretne tipove, već formiraju kontinuum individualnih razlika. Time rezultati više podržavaju dimenzionalni model strukture osobina nego tipološku klasifikaciju.
+
+Metodološki posmatrano, doslednost rezultata kroz više različitih algoritama povećava pouzdanost zaključka da odsustvo jasnih klastera nije posledica izbora metode, već karakteristika samih podataka.
+
+Stoga se može zaključiti da u okviru analiziranog uzorka ne postoji empirijska osnova za stabilnu segmentaciju ispitanika u jasno diferencirane grupe, već se individualne razlike adekvatnije opisuju kroz kontinuirane dimenzije.
+
 
 \end{document}
