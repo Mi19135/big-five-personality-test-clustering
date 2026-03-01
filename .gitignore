@@ -1,3 +1,10 @@
+.gitattributes
+latex/*.aux
+latex/*.dvi
+latex/*.log
+latex/*.out
+latex/*.synctex.gz
+latex/*.toc
 archive/
 archive/data-final.csv
 archive/codebook.txt

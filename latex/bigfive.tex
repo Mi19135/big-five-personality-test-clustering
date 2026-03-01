@@ -33,16 +33,16 @@
 U ovom radu analiziramo podatke prikupljene putem Big Five Personality testa, jednog od najuticajnijih i empirijski najpotvrđenijih modela ličnosti u savremenoj psihologiji. Model opisuje ličnost kroz pet osnovnih dimenzija:
 
 \begin{itemize}
-    \item Ekstraverzija (Extraversion)
-    \item Neuroticizam (Neuroticism)
-    \item Prijatnost (Agreeableness)
-    \item Savesnost (Conscientiousness)
-    \item Otvorenost ka iskustvu (Openness to Experience)
+    \item Ekstraverzija (EXT)
+    \item Neuroticizam / Emocionalna stabilnost (EST)
+    \item Prijatnost (AGR)
+    \item Savesnost (CSN)
+    \item Otvorenost ka iskustvu (OPN)
 \end{itemize}
 
 Svaka dimenzija meri se pomoću više tvrdnji koje ispitanici ocenjuju na Likertovoj skali (od 1 do 5). Agregacijom odgovora dobija se numerički skor koji predstavlja izraženost određene osobine kod pojedinca.
 
-Iako se osobine ličnosti tradicionalno posmatraju kao kontinuirane dimenzije, postavlja se pitanje da li se ispitanici mogu prirodno grupisati u određene tipove ličnosti. Drugim rečima, da li u podacima postoji latentna struktura koja ukazuje na postojanje relativno stabilnih grupa pojedinaca sa sličnim profilima osobina?
+Iako se osobine ličnosti tradicionalno posmatraju kao kontinuirane dimenzije, postavlja se pitanje da li se ispitanici mogu prirodno grupisati u određene tipove ličnosti.
 
 
 \begin{figure}[H]
@@ -53,8 +53,6 @@ Iako se osobine ličnosti tradicionalno posmatraju kao kontinuirane dimenzije, p
 \end{figure}
 
 
-Ovaj rad ima za cilj da ispita postojanje takve strukture primenom metoda nenadgledanog učenja.
-
 \subsection{Cilj rada}
 
 Cilj rada je da se ispita da li se na osnovu odgovora na Big Five test može identifikovati prirodna segmentacija ispitanika. 
@@ -63,7 +61,7 @@ Konkretnije, cilj je:
 \begin{itemize}
     \item utvrditi da li postoji jasno izražena klasterska struktura u podacima,
     \item uporediti performanse različitih algoritama klasterovanja,
-    \item interpretirati dobijene klastere na osnovu prosečnih vrednosti osobina.
+    \item interpretirati dobijene klastere.
 \end{itemize}
 
 \section{Opis podataka}
@@ -74,14 +72,8 @@ Ispitanici su na početku testa informisani da će njihovi odgovori biti sačuva
 
 \subsection{Struktura upitnika}
 
-Upitnik se sastoji od 50 tvrdnji, po 10 za svaku od pet dimenzija ličnosti:
-\begin{itemize}
-    \item Ekstraverzija (EXT),
-    \item Neuroticizam / Emocionalna stabilnost (EST),
-    \item Saradljivost (AGR),
-    \item Savesnost (CSN),
-    \item Otvorenost ka iskustvu (OPN).
-\end{itemize}
+Upitnik se sastoji od 50 tvrdnji, po 10 za svaku od vec navednih pet dimenzija ličnosti.
+
 
 Svaka tvrdnja ocenjena je na petostepenoj Likertovoj skali:
 \begin{center}
@@ -105,23 +97,22 @@ Dataset sadrži i sledeće tehničke i kontekstualne informacije:
 
 U okviru analize, primarni fokus biće na odgovorima na tvrdnje (50 stavki), dok će dodatne promenljive biti korišćene za filtriranje i inicijalnu obradu podataka (npr. uklanjanje višestrukih unosa korišćenjem promenljive \texttt{IPC}).
 
-\section{Metodologija}
 
-\subsection{Priprema podataka}
+
+\section{Preprocesiranje podataka}
 
 Pre primene algoritama klasterovanja izvršeni su sledeći koraci:
 
 \begin{itemize}
     \item Provera i uklanjanje nedostajućih vrednosti.
-    \item Eventualna agregacija odgovora po dimenzijama.
     \item Skaliranje numeričkih podataka radi ujednačavanja opsega vrednosti.
+    \item Eventualna agregacija odgovora po dimenzijama.
+    
 \end{itemize}
 
 Skaliranje je posebno važno jer većina algoritama klasterovanja koristi udaljenosti između tačaka, te različiti opsezi varijabli mogu značajno uticati na rezultate.
 
-\section{Pretprocesiranje podataka}
 
-Pre same primene algoritama klasterovanja izvršena je detaljna priprema podataka.
 
 \subsection{Učitavanje i filtriranje podataka}
 
@@ -143,7 +134,7 @@ Pored toga, formiran je i prošireni skup podataka koji uključuje i vremenske p
 
 \subsection{Standardizacija podataka}
 
-Pre primene algoritama klasterovanja izvršena je standardizacija svih numeričkih promenljivih korišćenjem metode Z-transformacije (StandardScaler).
+Izvršena je standardizacija svih numeričkih promenljivih korišćenjem metode Z-transformacije (StandardScaler).
 
 Standardizacijom se svaka promenljiva transformiše tako da ima srednju vrednost 0 i standardnu devijaciju 1:
 
@@ -207,6 +198,7 @@ U radu su primenjeni sledeći algoritmi:
     \item K-means klasterovanje
     \item Hijerarhijsko (agglomerativno) klasterovanje
     \item DBSCAN
+    \item Probabilističko klasterovanje zasnovano na mešavini normalnih raspodela - GMM
     \item Spektralno klasterovanje
 \end{itemize}
 
@@ -226,8 +218,6 @@ KMeans je primenjen na:
     \item skup od 50 psiholoških stavki (bez vremenskih promenljivih),
     \item prošireni skup od 100 promenljivih (uključujući vreme odgovaranja).
 \end{enumerate}
-
-Labele klastera dodate su PCA DataFrame-ovima kako bismo mogli vizualizovati raspodelu u prostoru prve dve glavne komponente.
 
 \begin{figure}[H]
     \centering
@@ -260,11 +250,10 @@ Sa vremenskim promenljivim & 0.048 & 3.07 & 238.1 \\
 \end{tabular}
 \end{center}
 
-\paragraph{Tumačenje:}  
 Rezultati deluju loše jer algoritam KMeans forsira postojanje klastera čak i kada prirodno nisu jasno izraženi. To je tipično za podatke prikupljene po Big Five modelu, gde se osobine posmatraju kao kontinuirane dimenzije, a ne kao strogi tipovi ličnosti.
-Primetno je da uključivanje vremenskih promenljivih (\_E) donekle menja raspodelu klastera, ali ne dramatično.
+Primetno je da uključivanje vremenskih promenljivih (\_E) ne menja značajno raspodelu klastera.
 
-\paragraph{Napomena o broju klastera:}  
+ 
 Eksperimenti sa $k=4$ mogu dati jasnije granice između klastera, jer peti klaster samo razblažuje centralne tačke.
 
 
@@ -302,7 +291,7 @@ Projekcije podataka na prve dve glavne komponente (PCA) ukazuju na izraženo pre
 
 Vrednosti Silhouette indeksa kreću se u rasponu od približno 0.02 do 0.06, što ukazuje na veoma slabu klastersku separaciju. Niske vrednosti ovog indeksa sugerišu da su posmatranja podjednako bliska susednim klasterima kao i sopstvenom klasteru, odnosno da ne postoji izražena prirodna segmentacija podataka.
 
-Iako su u pojedinim uslovima zabeležene nešto povoljnije vrednosti Davies–Bouldin i Calinski–Harabasz indeksa, ta poboljšanja nisu praćena jasnim vizuelnim razdvajanjem grupa. Povećanje Calinski–Harabasz indeksa sa rastom veličine uzorka može se delimično objasniti njegovom osetljivošću na broj posmatranja, te se ne može tumačiti kao dokaz stabilne klasterske strukture.
+Iako su u pojedinim uslovima zabeležene nešto povoljnije vrednosti Davies–Bouldin i Calinski–Harabasz indeksa, ta poboljšanja nisu praćena jasnim vizuelnim razdvajanjem grupa. 
 
 Sa smanjenim brojem klastera ($k=3$) primećeno je neznatno poboljšanje vrednosti Silhouette indeksa (maksimalno oko 0.07), međutim razlike u odnosu na rešenje sa većim brojem klastera nisu značajne i ne menjaju opšti obrazac rezultata.
 
@@ -338,9 +327,6 @@ U tom smislu, rezultati dobijeni Ward-ovim kriterijumom smatraju se pouzdanijim 
 Rezultati complete linkage metode prikazani su za tri veličine uzorka (n=2000, 5000 i 10000), sa i bez vremenskih promenljivih.
 
 
-
-
-
 Kod modela bez vremenskih promenljivih, vrednosti Silhouette indeksa ostaju veoma niske (0.018--0.035), dok je Davies-Bouldin indeks visok (3.165--3.860), što ukazuje na slabu separaciju i značajno preklapanje klastera. Vizuelna analiza PCA projekcije potvrđuje odsustvo jasno definisane klasterske strukture.
 
 Nasuprot tome, uključivanje vremenskih promenljivih dovodi do značajnog poboljšanja svih validacionih metrika. Silhouette indeks dostiže vrednosti između 0.671 i 0.863, dok Davies-Bouldin indeks opada ispod 0.3. Calinski-Harabasz indeks pokazuje snažan rast sa povećanjem veličine uzorka, što ukazuje na stabilniju i kompaktniju klastersku strukturu.
@@ -355,7 +341,7 @@ Međutim, vizuelna analiza sugeriše postojanje jednog dominantnog klastera uz n
 \end{figure}
 
 \paragraph{Zaključak aglomerativne metode} 
-U okviru hijerarhijskog klasterovanja analizirane su tri varijante aglomerativne metode: Ward, Single i Complete linkage. Rezultati pokazuju značajne razlike u stabilnosti i kvalitetu formiranih klastera.
+ Rezultati pokazuju značajne razlike u stabilnosti i kvalitetu formiranih klastera.
 
 Single linkage metoda pokazala je izražen chaining efekat za sve veličine uzorka i oba skupa podataka. Gotovo ceo skup podataka svrstavan je u jedan dominantan klaster, dok su preostali klasteri sadržali pojedinačne ili veoma mali broj instanci. Iako su pojedine validacione metrike bile visoke, distribucija klastera ukazuje na neadekvatnu segmentaciju podataka.
 
@@ -363,7 +349,7 @@ Complete linkage metoda, bez vremenskih promenljivih, formira relativno uravnote
 
 Ward metoda pokazala je najveći stepen stabilnosti. Bez vremenskih promenljivih klasteri su relativno ravnomerno raspoređeni kroz sve veličine uzorka. Kod modela sa vremenskim promenljivim pojavljuju se manji izolovani klasteri, ali raspodela ostaje značajno uravnoteženija u poređenju sa Single i Complete metodama.
 
-Na osnovu analize validacionih metrika i distribucije veličina klastera može se zaključiti da Ward metoda predstavlja najstabilniji i metodološki najopravdaniji izbor unutar aglomerativnog pristupa za analizirani skup podataka.
+Na osnovu analize validacionih metrika i distribucije veličina klastera može se zaključiti da Ward metoda predstavlja najstabilniji izbor unutar aglomerativnog pristupa za analizirani skup podataka.
 
 
 
@@ -405,8 +391,6 @@ Međutim, kod modela sa \_E atributima primećena je izražena degeneracija mode
 
 Takvo rešenje predstavlja kolaps komponenti u GMM modelu (component collapse), pri čemu jedna Gaussova komponenta preuzima gotovo celu raspodelu podataka, dok ostale postaju numerički nestabilne. Iako ovakvo rešenje može rezultovati visokim vrednostima indeksa kao što je Silhouette koeficijent, ono ne predstavlja smisleno klastersko razdvajanje.
 
-Dobijeni rezultati ukazuju da povećanje dimenzionalnosti skupa atributa može dovesti do nestabilnosti procene kovarijacionih matrica u GMM modelu, posebno kod velikih uzoraka, što za posledicu ima degeneraciju klasterske strukture.
-
 Testiranje većeg broja komponenti nije dovelo do poboljšanja kvaliteta klastera.Kod modela bez \_E atributa metrika ostaje bliska nuli,dok kod modela sa \_E atributima dolazi do izraženog kolapsa komponenti pri većim uzorcima,čime se potvrđuje nestabilnost GMM modela u ovom skupu podataka.
 
 
@@ -436,7 +420,7 @@ Dobijeni rezultati sugerišu postojanje slabe lokalne strukture podataka, ali be
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../slike/spectral_nearest_neighbors.png}
-    \caption{Spectral clustering ($k=5$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
+    \caption{Spectral clustering ($k=5$ , $n\_neighbors=20$) za različite veličine uzorka – poređenje bez i sa vremenskim promenljivama}
     \label{fig:spec_neighbor}
 \end{figure}
 
@@ -449,9 +433,10 @@ U ovom delu istraživanja primenjen je Spectral Clustering sa RBF
 Rezultati pokazuju izrazitu nestabilnost modela, naročito kod
 proširenog skupa atributa (sa \_E promenljivama).
 
-Za manje vrednosti parametra $\gamma$ primećena je velika
-neravnoteža klastera, dok sa povećanjem $\gamma$ dolazi do
-potpunog kolapsa modela, gde gotovo svi slogovi bivaju dodeljeni
+
+Kod modela bez \_E atributa,za manje vrednosti parametra $\gamma$ (0.1 i 0.25), vizuelna analiza ukazuje na blagu tendenciju segmentacije prostora u nekoliko vecih grupa.Medjutim ova struktura nije stabilna kroz promene parametra $\gamma$.
+ 
+Sa povećanjem $\gamma$ dolazi do potpunog kolapsa modela, gde gotovo svi slogovi bivaju dodeljeni
 jednom dominantnom klasteru, uz pojavu nekoliko izolovanih
 jedinica.
 
@@ -466,9 +451,6 @@ Ovakva struktura ukazuje da podaci nemaju izraženu
 nelinearnu klastersku strukturu koju Spectral Clustering
 može da detektuje.
 
-Vizuelna analiza PCA projekcija potvrđuje da slogovi
-formiraju gust kontinuiran oblak bez jasno razdvojenih
-grupa.
 
 Može se zaključiti da primena RBF afiniteta u ovom slučaju
 ne doprinosi identifikaciji stabilnih i interpretabilnih
@@ -498,18 +480,8 @@ klastera.
     \label{fig:rbf0.5}
 \end{figure}
 
-\section{Poređenje algoritama klasterovanja}
-
-U okviru eksperimentalnog dela rada testirani su sledeći algoritmi klasterovanja:
-K-means, hijerarhijsko klasterovanje (Agglomerative, Ward metoda),
-DBSCAN, Gaussian Mixture Model (GMM) i Spectral Clustering sa RBF jezgrom.
-
-Evaluacija kvaliteta klastera izvršena je korišćenjem internih metrika:
-Silhouette koeficijenta, Davies–Bouldin (DB) indeksa i Calinski–Harabasz (CH) indeksa.
-
-
-\subsection{Alternativni pristupi}
-\subsubsection{Nelinearna redukcija dimenzionalnosti (UMAP)}
+\section{Alternativni pristupi}
+\subsection{Redukcija dimenzionalnosti (UMAP)}
 
 Kako primena linearne redukcije dimenzionalnosti pomoću PCA nije rezultirala jasnom separacijom klastera, u daljoj analizi ispitana je mogućnost postojanja nelinearne strukture podataka. U tu svrhu primenjena je metoda Uniform Manifold Approximation and Projection (UMAP), koja omogućava očuvanje lokalne geometrije podataka i potencijalno bolje razdvajanje grupa u slučaju nelinearnih odnosa između promenljivih.
 
@@ -528,7 +500,7 @@ Dobijeni rezultati sugerišu da ograničena separacija klastera nije posledica l
 \end{figure}
 
 
-\subsubsection{Analiza trodimenzionalnih kombinacija subskala}
+\subsection{Analiza trodimenzionalnih kombinacija subskala}
 
 Kako bi se dodatno ispitala potencijalna struktura podataka u nižedimenzionalnim prostorima, izvršena je analiza svih kombinacija po tri sumarne subskale (EXT, EST, AGR, CSN, OPN). Za svaku od $\binom{5}{3}=10$ mogućih trodimenzionalnih kombinacija primenjen je K-means algoritam sa unapred definisanim brojem klastera ($k=3$).
 
@@ -582,9 +554,9 @@ Rezultati ove analize sugerišu da u trodimenzionalnim podprostorima sumiranih o
 \end{figure}
 
 
-\subsubsection{K-means klasterovanje nad svih pet subskala}
+\subsection{K-means klasterovanje nad svih pet subskala}
 
-Klaster analiza je sprovedena nad pet sumiranih i standardizovanih subskala (EXT, EST, AGR, CSN i OPN). Nakon standardizacije podataka, izdvojen je uzorak od 15\,000 ispitanika radi stabilnosti i računske efikasnosti analize. Primenjen je K-means algoritam sa unapred definisanim brojem klastera $k=3$.
+Klaster analiza je sprovedena nad pet sumiranih i standardizovanih subskala (EXT, EST, AGR, CSN i OPN). Nakon standardizacije podataka, izdvojen je uzorak od 15000 ispitanika radi stabilnosti i računske efikasnosti analize. Primenjen je K-means algoritam sa unapred definisanim brojem klastera $k=3$.
 
 Dobijene veličine klastera bile su:
 
@@ -612,8 +584,6 @@ Ovi rezultati ukazuju da u prostoru svih pet subskala ne postoji izražena priro
 
 
 \section{Uporedna analiza primenjenih metoda klasterovanja}
-
-U cilju identifikacije potencijalne latentne strukture podataka, primenjeno je više različitih metoda klasterovanja: K-means, hijerarhijsko klasterovanje (Agglomerative), Gaussian Mixture Model (GMM), Spectral clustering, kao i analiza kroz dimenzionalnu redukciju (PCA i UMAP).
 
 \subsection*{K-means}
 
