@@ -5,6 +5,7 @@ latex/*.log
 latex/*.out
 latex/*.synctex.gz
 latex/*.toc
+latex/*.pdf
 archive/
 archive/data-final.csv
 archive/codebook.txt
