@@ -45,4 +45,3 @@ Rezultati ukazuju da podaci ne pokazuju stabilnu tipološku klastersku strukturu
 [Ksenija Ivanović 135/2019](https://github.com/Mi19135)
 
 
-https://www.kaggle.com/datasets/tunguz/big-five-personality-test
