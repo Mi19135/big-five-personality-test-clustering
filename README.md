@@ -8,7 +8,9 @@ Ovaj projekat predstavlja analizu podataka zasnovanih na Big Five modelu ličnos
 
 Cilj projekta je da se ispita da li se ispitanici prirodno grupišu u stabilne i jasno razdvojene klastere, ili podaci pre predstavljaju kontinuum osobina, u skladu sa dimenzionalnim modelom ličnosti.
 Analiza obuhvata:
+
 -osnovni skup od 50 psiholoskih stavki
+
 -prošireni skup od 100 promenljivih (uključujući vreme odgovaranja)
 
 ## Metodologija
