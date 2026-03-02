@@ -41,7 +41,7 @@ Podaci su preuzeti sa platforme Kaggle:
 
 Rezultati ukazuju da podaci ne pokazuju stabilnu tipološku klastersku strukturu, već kontinuiranu raspodelu osobina, što je u skladu sa teorijskim pretpostavkama Big Five modela.
 
-## Autor:
+### Autor:
 [Ksenija Ivanović 135/2019](https://github.com/Mi19135)
 
 
